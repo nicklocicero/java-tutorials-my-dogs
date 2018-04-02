@@ -1,39 +1,44 @@
 package edu.cnm.bootcamp.classes;
 
-public class Dog {
-    int pawsOnGround = 4;
-    boolean isLicking = false;
-    String name = "";
-
-    public void setName(String name) {
-      this.name = name;
-    }
-
-  void jumpsToLick() {
-      if (isLicking == true) {
-        pawsOnGround = 2;
-        isLicking = true;
-      } else {
-        System.out.println(this.name + " licks even more!");
-      }
-    }
-
-    void settlesDown() {
-      pawsOnGround = 4;
-      isLicking = false;
-    }
-
-    void printStates() {
-      if (pawsOnGround == 4) {
-        System.out.println(this.name + " is on the ground and not licking anybody.");
-      } else {
-        System.out.println(this.name + " is jumping on someone and licking them!");
-      }
-
-    }
+interface dogs {
+  void setName(String name);
+  void jumpsToLick();
+  void settlesDown();
 }
 
-class BillyAndHoneyAndTiny {
+public class Dog implements dogs {
+  int pawsOnGround = 4;
+  boolean isLicking = false;
+  String name = "";
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void jumpsToLick() {
+    if (isLicking == false) {
+      pawsOnGround = 2;
+      isLicking = true;
+    } else {
+      System.out.println(this.name + " licks even more!");
+    }
+  }
+
+  public void settlesDown() {
+    pawsOnGround = 4;
+    isLicking = false;
+  }
+
+  void printStates() {
+    if (pawsOnGround == 4) {
+      System.out.println(this.name + " is on the ground and not licking anybody.");
+    } else {
+      System.out.println(this.name + " is jumping on someone and licking them!");
+    }
+  }
+}
+
+class BillyAndHoneyAndTiny extends Dog {
   public static void main(String[] args) {
     Dog Billy = new Dog();
     Dog Honey = new Dog();
@@ -50,7 +55,5 @@ class BillyAndHoneyAndTiny {
     Billy.printStates();
     Tiny.printStates();
     Honey.printStates();
-
-
   }
 }
